@@ -1,0 +1,20 @@
+# Código compilado #
+*.class
+
+# Empaquetados #
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs #
+*.log
+
+# Archivos de Eclipse #
+.classpath
+.project
+.settings
