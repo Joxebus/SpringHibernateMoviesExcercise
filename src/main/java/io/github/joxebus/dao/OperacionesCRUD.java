@@ -1,11 +1,11 @@
-package mx.com.sintelti.ejercicio.hibernate.dao;
+package io.github.joxebus.dao;
 
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import mx.com.sintelti.ejercicio.hibernate.util.Persistible;
-import mx.com.sintelti.ejercicio.hibernate.util.Utilities;
+import io.github.joxebus.util.Persistible;
+import io.github.joxebus.util.Utilities;
 
 
 public class OperacionesCRUD<T>  {

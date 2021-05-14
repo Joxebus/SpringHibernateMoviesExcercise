@@ -1,11 +1,11 @@
-package mx.com.sintelti.ejercicio.hibernate.main;
+package io.github.joxebus.main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import mx.com.sintelti.ejercicio.hibernate.bussines.Administracion;
-import mx.com.sintelti.ejercicio.hibernate.entity.DVDEntity;
+import io.github.joxebus.bussines.Administracion;
+import io.github.joxebus.entity.DVDEntity;
 
 
 
@@ -46,7 +46,7 @@ public class Main {
 						break;
 					case '8':
 						System.out.println("************ DVDs disponibles ************");
-						System.out.println("Código \tTítulo \tGenero \tProtagonista \tDirector");
+						System.out.println("Cï¿½digo \tTï¿½tulo \tGenero \tProtagonista \tDirector");
 						for(DVDEntity dvd : admon.list(new DVDEntity())){
 							System.out.println(dvd);
 						}
@@ -56,7 +56,7 @@ public class Main {
 						admon.leerDatosArchivo();
 						break;
 						default:
-							System.out.println("Opción invalida");
+							System.out.println("Opciï¿½n invalida");
 							opcion='S';
 							break;
 				}

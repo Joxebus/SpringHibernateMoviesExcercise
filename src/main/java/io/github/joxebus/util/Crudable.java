@@ -1,4 +1,4 @@
-package mx.com.sintelti.ejercicio.hibernate.util;
+package io.github.joxebus.util;
 
 import java.util.List;
 

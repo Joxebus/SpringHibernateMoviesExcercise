@@ -17,6 +17,6 @@
     <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
     <property name="sql_show">true</property>    
     <property name="hbm2ddl.auto">update</property>
-    <mapping resource="mx/com/sintelti/ejercicio/hibernate/entity/mapeos.hbm.xml"/>
+    <mapping resource="io/github/joxebus/entity/mapeos.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

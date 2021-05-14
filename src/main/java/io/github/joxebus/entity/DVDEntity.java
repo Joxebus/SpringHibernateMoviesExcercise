@@ -1,8 +1,8 @@
-package mx.com.sintelti.ejercicio.hibernate.entity;
+package io.github.joxebus.entity;
 
-import mx.com.sintelti.ejercicio.hibernate.util.Persistible;
+import io.github.joxebus.util.Persistible;
 
-public final class DVDEntity implements Comparable<DVDEntity>, Persistible{
+public final class DVDEntity implements Comparable<DVDEntity>, Persistible {
 	private long id;
 	private String titulo;
 	private String genero;

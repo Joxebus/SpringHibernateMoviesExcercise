@@ -1,4 +1,4 @@
-package mx.com.sintelti.ejercicio.hibernate.bussines;
+package io.github.joxebus.bussines;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,20 +14,20 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 
-import mx.com.sintelti.ejercicio.hibernate.dao.OperacionesCRUD;
-import mx.com.sintelti.ejercicio.hibernate.entity.DVDEntity;
-import mx.com.sintelti.ejercicio.hibernate.util.Persistible;
-import mx.com.sintelti.ejercicio.hibernate.util.Utilities;
+import io.github.joxebus.dao.OperacionesCRUD;
+import io.github.joxebus.util.Persistible;
+import io.github.joxebus.util.Utilities;
+import io.github.joxebus.entity.DVDEntity;
 
 public class Administracion {
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	private OperacionesCRUD <DVDEntity> operaciones = new OperacionesCRUD <DVDEntity>();
+	private OperacionesCRUD<DVDEntity> operaciones = new OperacionesCRUD <DVDEntity>();
 	private DVDEntity dvd;
 	
-	// Recolección de datos
+	// Recolecciï¿½n de datos
 	public void leerDatosArchivo(){
 		dvd = Utilities.getContext().getBean("dvd",DVDEntity.class);
-		System.out.println("Registrar una nueva película");
+		System.out.println("Registrar una nueva pelï¿½cula");
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(new File("D:\\Peliculas.txt")));
 			String linea;
@@ -49,7 +49,7 @@ public class Administracion {
 	}
 	
 	private void leerDatos(){
-		System.out.println("Registrar una nueva película");		
+		System.out.println("Registrar una nueva pelï¿½cula");		
 		try {
 			System.out.print("Titulo: ");			
 			dvd.setTitulo(br.readLine());
@@ -175,7 +175,7 @@ public class Administracion {
 	public List<DVDEntity> buscarPorGeneroOrProtagonista(){
 		String parametro="";
 		try {
-			System.out.print("Genero ó Protagonista: ");	
+			System.out.print("Genero ï¿½ Protagonista: ");	
 			parametro = br.readLine();					
 		} catch (IOException e) {			
 			System.out.println("El registro no se pudo llevar a cabo");
