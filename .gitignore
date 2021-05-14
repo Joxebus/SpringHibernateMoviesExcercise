@@ -1,5 +1,6 @@
-# Código compilado #
+# Cï¿½digo compilado #
 *.class
+target
 
 # Empaquetados #
 *.7z
@@ -18,3 +19,4 @@
 .classpath
 .project
 .settings
+.springBeans
