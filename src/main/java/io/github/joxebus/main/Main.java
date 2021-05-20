@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import io.github.joxebus.bussines.Administracion;
-import io.github.joxebus.entity.DVDEntity;
+import io.github.joxebus.service.PeliculaService;
+import io.github.joxebus.entity.Pelicula;
 
 
 
@@ -14,7 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 		char opcion='S';
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		Administracion admon = new Administracion();
+		PeliculaService admon = new PeliculaService();
 		do{
 			
 			try {
@@ -24,7 +24,7 @@ public class Main {
 				
 				switch(opcion){
 					case '1':
-						admon.agregarDVD();
+						admon.agregar();
 						break;
 					case '2':
 						admon.actualizar();
@@ -45,10 +45,10 @@ public class Main {
 						admon.eliminar();
 						break;
 					case '8':
-						System.out.println("************ DVDs disponibles ************");
+						System.out.println("************ peliculas disponibles ************");
 						System.out.println("C�digo \tT�tulo \tGenero \tProtagonista \tDirector");
-						for(DVDEntity dvd : admon.list(new DVDEntity())){
-							System.out.println(dvd);
+						for(Pelicula pelicula : admon.list(new Pelicula())){
+							System.out.println(pelicula);
 						}
 						System.out.println("******************************************");
 						break;
@@ -69,14 +69,14 @@ public class Main {
 	
 	public static void menu(){
 		System.out.println("********** Elija una opcion **********\n" +
-				"1.- Agregar dvd\n" +
-				"2.- Modificar dvd\n" +
-				"3.- Buscar dvd\n" +
-				"4.- Buscar por protagonista dvd\n" +						
-				"5.- Buscar por director dvd\n" +
-				"6.- Buscar por genero o protagonista dvd\n" +
-				"7.- Eliminar dvd\n" +
-				"8.- Listar dvds\n" +
+				"1.- Agregar pelicula\n" +
+				"2.- Modificar pelicula\n" +
+				"3.- Buscar pelicula\n" +
+				"4.- Buscar por protagonista pelicula\n" +
+				"5.- Buscar por director pelicula\n" +
+				"6.- Buscar por genero o protagonista pelicula\n" +
+				"7.- Eliminar pelicula\n" +
+				"8.- Listar peliculas\n" +
 				"9.- Cargar datos de archivo" 
 				);
 	}

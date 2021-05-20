@@ -1,23 +1,32 @@
 package io.github.joxebus.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import io.github.joxebus.util.Persistible;
 
-public final class DVDEntity implements Comparable<DVDEntity>, Persistible {
+@Entity
+public final class Pelicula implements Comparable<Pelicula>, Persistible {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String titulo;
 	private String genero;
 	private String director;
 	private String protagonista;
 	
-	public DVDEntity(){}
+	public Pelicula(){}
 	
-	public int compareTo(DVDEntity dVDEntity){
-		return this.titulo.compareTo(dVDEntity.getTitulo());
+	public int compareTo(Pelicula peliculaEntity){
+		return this.titulo.compareTo(peliculaEntity.getTitulo());
 	}
 	
 	
-	public DVDEntity(String titulo, String genero, String director,
-			String protagonista) {
+	public Pelicula(String titulo, String genero, String director,
+					String protagonista) {
 		super();
 		this.titulo = titulo;
 		this.genero = genero;
@@ -79,7 +88,7 @@ public final class DVDEntity implements Comparable<DVDEntity>, Persistible {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DVDEntity other = (DVDEntity) obj;
+		Pelicula other = (Pelicula) obj;
 		if (id != other.id)
 			return false;
 		return true;

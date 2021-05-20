@@ -4,19 +4,18 @@
 		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>   
-    <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+    <property name="connection.driver_class">org.h2.Driver</property>
     
-    <property name="connection.url">jdbc:hsqldb:hsql://localhost</property>
+    <property name="connection.url">jdbc:h2:file:~/video_centro;AUTO_SERVER=TRUE</property>
     <property name="connection.username">sa</property>
     <property name="connection.password"></property>    
     
     <property name="connection.pool_size">1</property>
-    <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+    <property name="dialect">org.hibernate.dialect.H2Dialect</property>
     
     <property name="current_session_context_class">thread</property>   
-    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
-    <property name="sql_show">true</property>    
+    <property name="sql_show">true</property>
     <property name="hbm2ddl.auto">update</property>
-    <mapping resource="io/github/joxebus/entity/mapeos.hbm.xml"/>
+    <mapping class="io.github.joxebus.entity.Pelicula"/>
     </session-factory>
 </hibernate-configuration>
