@@ -5,10 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import io.github.joxebus.util.Persistible;
-
 @Entity
-public final class Pelicula implements Comparable<Pelicula>, Persistible {
+public final class Movie implements Comparable<Movie>, Persistible {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,15 +16,15 @@ public final class Pelicula implements Comparable<Pelicula>, Persistible {
 	private String director;
 	private String protagonista;
 	
-	public Pelicula(){}
+	public Movie(){}
 	
-	public int compareTo(Pelicula peliculaEntity){
-		return this.titulo.compareTo(peliculaEntity.getTitulo());
+	public int compareTo(Movie movieEntity){
+		return this.titulo.compareTo(movieEntity.getTitulo());
 	}
 	
 	
-	public Pelicula(String titulo, String genero, String director,
-					String protagonista) {
+	public Movie(String titulo, String genero, String director,
+				 String protagonista) {
 		super();
 		this.titulo = titulo;
 		this.genero = genero;
@@ -88,7 +86,7 @@ public final class Pelicula implements Comparable<Pelicula>, Persistible {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pelicula other = (Pelicula) obj;
+		Movie other = (Movie) obj;
 		if (id != other.id)
 			return false;
 		return true;

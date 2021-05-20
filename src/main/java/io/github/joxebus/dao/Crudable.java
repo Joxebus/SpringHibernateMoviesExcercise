@@ -1,6 +1,8 @@
-package io.github.joxebus.util;
+package io.github.joxebus.dao;
 
 import java.util.List;
+
+import io.github.joxebus.entity.Persistible;
 
 
 public interface Crudable<T> {

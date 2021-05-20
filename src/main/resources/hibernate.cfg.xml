@@ -16,6 +16,6 @@
     <property name="current_session_context_class">thread</property>   
     <property name="sql_show">true</property>
     <property name="hbm2ddl.auto">update</property>
-    <mapping class="io.github.joxebus.entity.Pelicula"/>
+    <mapping class="io.github.joxebus.entity.Movie"/>
     </session-factory>
 </hibernate-configuration>

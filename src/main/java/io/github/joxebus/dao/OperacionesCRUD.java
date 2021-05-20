@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import io.github.joxebus.util.Persistible;
+import io.github.joxebus.entity.Persistible;
 import io.github.joxebus.util.Utilities;
 
 

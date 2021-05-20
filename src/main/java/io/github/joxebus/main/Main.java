@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import io.github.joxebus.service.PeliculaService;
-import io.github.joxebus.entity.Pelicula;
+import io.github.joxebus.service.MovieService;
+import io.github.joxebus.entity.Movie;
 
 
 
@@ -14,7 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 		char opcion='S';
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		PeliculaService admon = new PeliculaService();
+		MovieService admon = new MovieService();
 		do{
 			
 			try {
@@ -47,8 +47,8 @@ public class Main {
 					case '8':
 						System.out.println("************ peliculas disponibles ************");
 						System.out.println("C�digo \tT�tulo \tGenero \tProtagonista \tDirector");
-						for(Pelicula pelicula : admon.list(new Pelicula())){
-							System.out.println(pelicula);
+						for(Movie movie : admon.list(new Movie())){
+							System.out.println(movie);
 						}
 						System.out.println("******************************************");
 						break;
