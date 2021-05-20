@@ -16,15 +16,15 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.github.joxebus.dao.OperacionesCRUD;
+import io.github.joxebus.repository.GenericRepository;
 import io.github.joxebus.entity.Movie;
-import io.github.joxebus.entity.Persistible;
+import io.github.joxebus.entity.Entity;
 import io.github.joxebus.util.Utilities;
 
 public class MovieService {
 	private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	private OperacionesCRUD<Movie> operaciones = new OperacionesCRUD <>();
+	private GenericRepository<Movie> operaciones = new GenericRepository<>();
 	private Movie movie;
 	
 	// Recolecci�n de datos
@@ -196,8 +196,8 @@ public class MovieService {
 		
 	}
 	
-	public List<Movie> list(Persistible persistible){
-		return operaciones.list(persistible);
+	public List<Movie> list(Entity entity){
+		return operaciones.list(entity);
 	}
 
 }
