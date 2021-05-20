@@ -4,36 +4,36 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import io.github.joxebus.entity.Entity;
+import io.github.joxebus.entity.TableEntity;
 import io.github.joxebus.util.Utilities;
 
 
-public class GenericRepository<T>  {
+public class GenericRepository<T extends TableEntity> implements Repository<T>  {
 	private Session session;
 	
 	
-	public final void create(T entity) {
+	public final void create(T tableEntity) {
 		session = Utilities.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		session.save((T)entity);
+		session.save((T)tableEntity);
 		session.getTransaction().commit();
 	}
 	
-	public final T read(Entity entity) {
+	public final T read(TableEntity tableEntity) {
 		session = Utilities.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		@SuppressWarnings("unchecked")
-		T objetoNuevo = (T) session.createCriteria(entity.getClass())
-		.add(Restrictions.idEq(entity.getId()))
+		T objetoNuevo = (T) session.createCriteria(tableEntity.getClass())
+		.add(Restrictions.idEq(tableEntity.getId()))
 		.uniqueResult();
 		return objetoNuevo;
 		
 	}
 	
-	public final void update(T entity) {
+	public final void update(T tableEntity) {
 		session = Utilities.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		session.update((T)entity);
+		session.update((T)tableEntity);
 		session.getTransaction().commit();
 	}
 	
@@ -47,9 +47,9 @@ public class GenericRepository<T>  {
 	
 	
 	@SuppressWarnings("unchecked")
-	public List<T> list(Entity entity) {
+	public List<T> list(TableEntity tableEntity) {
 		session = Utilities.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		return (List<T>)session.createCriteria(entity.getClass()).list();		
+		return (List<T>)session.createCriteria(tableEntity.getClass()).list();
 	}
 }

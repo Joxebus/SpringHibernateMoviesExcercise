@@ -26,7 +26,7 @@ public class Utilities {
 	
 	private static ClassPathXmlApplicationContext buildSpringContext(){		
 			try{
-				return new ClassPathXmlApplicationContext("/ApplicationContext.xml");
+				return new ClassPathXmlApplicationContext("/applicationContext.xml");
 			}catch(BeansException ace){
 				throw new ExceptionInInitializerError(ace);
 			}			

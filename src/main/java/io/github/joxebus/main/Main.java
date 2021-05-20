@@ -7,8 +7,6 @@ import java.io.InputStreamReader;
 import io.github.joxebus.service.MovieService;
 import io.github.joxebus.entity.Movie;
 
-
-
 public class Main {
 
 	public static void main(String[] args) {

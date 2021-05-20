@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import io.github.joxebus.repository.GenericRepository;
 import io.github.joxebus.entity.Movie;
-import io.github.joxebus.entity.Entity;
+import io.github.joxebus.entity.TableEntity;
 import io.github.joxebus.util.Utilities;
 
 public class MovieService {
@@ -196,8 +196,8 @@ public class MovieService {
 		
 	}
 	
-	public List<Movie> list(Entity entity){
-		return operaciones.list(entity);
+	public List<Movie> list(TableEntity tableEntity){
+		return operaciones.list(tableEntity);
 	}
 
 }

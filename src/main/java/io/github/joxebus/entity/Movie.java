@@ -1,11 +1,12 @@
 package io.github.joxebus.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@javax.persistence.Entity
-public final class Movie implements Comparable<Movie>, Entity {
+@Entity
+public final class Movie implements Comparable<Movie>, TableEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
