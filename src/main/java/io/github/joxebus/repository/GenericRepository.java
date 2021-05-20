@@ -8,9 +8,8 @@ import io.github.joxebus.entity.TableEntity;
 import io.github.joxebus.util.Utilities;
 
 
-public class GenericRepository<T extends TableEntity> implements Repository<T>  {
+public abstract class GenericRepository<T extends TableEntity> implements Repository<T>  {
 	private Session session;
-	
 	
 	public final void create(T tableEntity) {
 		session = Utilities.getSessionFactory().getCurrentSession();

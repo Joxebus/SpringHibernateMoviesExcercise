@@ -4,59 +4,62 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.springframework.context.ApplicationContext;
+
 import io.github.joxebus.service.MovieService;
 import io.github.joxebus.entity.Movie;
+import io.github.joxebus.util.Utilities;
 
 public class Main {
 
 	public static void main(String[] args) {
 		char opcion='S';
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		MovieService admon = new MovieService();
+		ApplicationContext applicationContext = Utilities.getApplicationContext();
+		MovieService admon = applicationContext.getBean(MovieService.class);
 		do{
-			
 			try {
-				Main.menu();
+				menu();
 				opcion = br.readLine().toUpperCase().charAt(0);
 				System.out.println("**************************************");
 				
 				switch(opcion){
 					case '1':
-						admon.agregar();
+						admon.create();
 						break;
 					case '2':
-						admon.actualizar();
+						admon.update();
 						break;
 					case '3':
-						System.out.println(admon.buscar());
+						System.out.println(admon.search());
 						break;
 					case '4':
-						admon.buscarPorProtagonista();
+						admon.searchByLeadCharacter();
 						break;
 					case '5':
-						admon.buscarPorDirector();
+						admon.searchByDirector();
 						break;
 					case '6':
-						admon.buscarPorGeneroOrProtagonista();
+						admon.searchByGenederOrLeadCharacter();
 						break;
 					case '7':
-						admon.eliminar();
+						admon.delete();
 						break;
 					case '8':
 						System.out.println("************ peliculas disponibles ************");
-						System.out.println("C�digo \tT�tulo \tGenero \tProtagonista \tDirector");
+						System.out.println("Código \tTítulo \tGenero \tProtagonista \tDirector");
 						for(Movie movie : admon.list(new Movie())){
 							System.out.println(movie);
 						}
 						System.out.println("******************************************");
 						break;
 					case '9':
-						admon.leerDatosArchivo();
+						System.out.println("Saliendo del sistema");
+						opcion='S';
 						break;
-						default:
-							System.out.println("Opci�n invalida");
-							opcion='S';
-							break;
+					default:
+						System.out.println("Opción inválida");
+						break;
 				}
 				
 			} catch (IOException e) {
@@ -66,16 +69,16 @@ public class Main {
 	}
 	
 	public static void menu(){
-		System.out.println("********** Elija una opcion **********\n" +
-				"1.- Agregar pelicula\n" +
-				"2.- Modificar pelicula\n" +
-				"3.- Buscar pelicula\n" +
-				"4.- Buscar por protagonista pelicula\n" +
-				"5.- Buscar por director pelicula\n" +
-				"6.- Buscar por genero o protagonista pelicula\n" +
-				"7.- Eliminar pelicula\n" +
-				"8.- Listar peliculas\n" +
-				"9.- Cargar datos de archivo" 
+		System.out.println("********** Seleccione una opción del menú de películas **********\n" +
+				"1.- Agregar\n" +
+				"2.- Modificar\n" +
+				"3.- Buscar\n" +
+				"4.- Buscar por protagonista\n" +
+				"5.- Buscar por director\n" +
+				"6.- Buscar por genero o protagonista\n" +
+				"7.- Eliminar\n" +
+				"8.- Listar\n" +
+				"9.- Salir"
 				);
 	}
 

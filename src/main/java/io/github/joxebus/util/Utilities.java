@@ -22,7 +22,7 @@ public class Utilities {
 		return SESSION_FACTORY;
 	}
 	
-	private static final ApplicationContext CONTEXT = buildSpringContext(); 
+	private static final ApplicationContext APPLICATION_CONTEXT = buildSpringContext();
 	
 	private static ClassPathXmlApplicationContext buildSpringContext(){		
 			try{
@@ -32,8 +32,8 @@ public class Utilities {
 			}			
 	}
 	
-	public static final ApplicationContext getContext(){
-		return CONTEXT;
+	public static final ApplicationContext getApplicationContext(){
+		return APPLICATION_CONTEXT;
 	}
 
 }
