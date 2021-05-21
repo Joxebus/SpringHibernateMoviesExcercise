@@ -16,7 +16,7 @@ public interface MovieService {
     Movie search();
 
     @SuppressWarnings("unchecked")
-    List<Movie> searchByGender(String genero);
+    List<Movie> searchByGenre(String genero);
 
     @SuppressWarnings("unchecked")
     List<Movie> searchByLeadCharacter();

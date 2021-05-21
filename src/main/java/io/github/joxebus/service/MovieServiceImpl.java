@@ -36,11 +36,11 @@ public class MovieServiceImpl implements MovieService {
         logger.info("Registrar una nueva película");
         try {
             System.out.print("Titulo: ");
-            movie.setTitulo(bufferedReader.readLine());
+            movie.setTitle(bufferedReader.readLine());
             System.out.print("Genero: ");
-            movie.setGenero(bufferedReader.readLine());
+            movie.setGenre(bufferedReader.readLine());
             System.out.print("Protagonista: ");
-            movie.setProtagonista(bufferedReader.readLine());
+            movie.setLeadCharacter(bufferedReader.readLine());
             System.out.print("Director: ");
             movie.setDirector(bufferedReader.readLine());
         } catch (IOException e) {
@@ -98,12 +98,12 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Movie> searchByGender(String genero) {
+    public List<Movie> searchByGenre(String genero) {
         Session session = Utilities.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         return (List<Movie>) session.createCriteria(Movie.class)
-                .add(Property.forName("genero").like(genero + "%"))
-                .addOrder(Property.forName("titulo").asc())
+                .add(Property.forName("genre").like(genero + "%"))
+                .addOrder(Property.forName("title").asc())
                 .setMaxResults(5).list();
 
     }
@@ -121,8 +121,8 @@ public class MovieServiceImpl implements MovieService {
         Session session = Utilities.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         return (List<Movie>) session.createCriteria(Movie.class)
-                .add(Property.forName("protagonista").like(protagonista + "%"))
-                .addOrder(Property.forName("titulo").asc()).list();
+                .add(Property.forName("leadCharacter").like(protagonista + "%"))
+                .addOrder(Property.forName("title").asc()).list();
     }
 
     @Override
@@ -145,22 +145,22 @@ public class MovieServiceImpl implements MovieService {
     @Override
     @SuppressWarnings("unchecked")
     public List<Movie> searchByGenderAndLeadCharacter() {
-        String genero = "";
-        String protagonista = "";
+        String genre = "";
+        String leadCharacter = "";
         try {
             System.out.print("Genero: ");
-            genero = bufferedReader.readLine();
+            genre = bufferedReader.readLine();
             System.out.print("Protagonista: ");
-            protagonista = bufferedReader.readLine();
+            leadCharacter = bufferedReader.readLine();
         } catch (IOException e) {
             logger.info("El registro no se pudo llevar a cabo");
         }
         Session session = Utilities.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         return (List<Movie>) session.createCriteria(Movie.class)
-                .add(Property.forName("genero").like(genero + "%"))
-                .add(Property.forName("protagonista").like(protagonista + "%"))
-                .addOrder(Property.forName("titulo").asc())
+                .add(Property.forName("genre").like(genre + "%"))
+                .add(Property.forName("leadCharacter").like(leadCharacter + "%"))
+                .addOrder(Property.forName("title").asc())
                 .setMaxResults(5).list();
 
     }
@@ -168,17 +168,17 @@ public class MovieServiceImpl implements MovieService {
     @Override
     @SuppressWarnings("unchecked")
     public List<Movie> searchByGenederOrLeadCharacter() {
-        String parametro = "";
+        String param = "";
         try {
             System.out.print("Genero o Protagonista: ");
-            parametro = bufferedReader.readLine();
+            param = bufferedReader.readLine();
         } catch (IOException e) {
             logger.info("El registro no se pudo llevar a cabo");
         }
         Session session = Utilities.getSessionFactory().getCurrentSession();
-        Order orderTitulo = Property.forName("titulo").asc();
-        Criterion critGen = Restrictions.like("genero", parametro + "%");
-        Criterion critPro = Restrictions.like("protagonista", parametro + "%");
+        Order orderTitulo = Property.forName("title").asc();
+        Criterion critGen = Restrictions.like("genre", param + "%");
+        Criterion critPro = Restrictions.like("leadCharacter", param + "%");
         LogicalExpression logicalExpression = Restrictions.or(critGen, critPro);
         session.beginTransaction();
         return (List<Movie>) session.createCriteria(Movie.class)

@@ -11,37 +11,37 @@ public final class Movie implements Comparable<Movie>, TableEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String titulo;
-	private String genero;
+	private String title;
+	private String genre;
 	private String director;
-	private String protagonista;
+	private String leadCharacter;
 	
 	public Movie(){}
-	
-	public int compareTo(Movie movieEntity){
-		return this.titulo.compareTo(movieEntity.getTitulo());
-	}
-	
-	
-	public Movie(String titulo, String genero, String director,
-				 String protagonista) {
+
+	public Movie(String title, String genre, String director,
+				 String leadCharacter) {
 		super();
-		this.titulo = titulo;
-		this.genero = genero;
+		this.title = title;
+		this.genre = genre;
 		this.director = director;
-		this.protagonista = protagonista;
+		this.leadCharacter = leadCharacter;
 	}
-	public String getTitulo() {
-		return titulo;
+
+	public int compareTo(Movie movieEntity){
+		return this.title.compareTo(movieEntity.getTitle());
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+
+	public String getTitle() {
+		return title;
 	}
-	public String getGenero() {
-		return genero;
+	public void setTitle(String titulo) {
+		this.title = titulo;
 	}
-	public void setGenero(String genero) {
-		this.genero = genero;
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genero) {
+		this.genre = genero;
 	}
 	public String getDirector() {
 		return director;
@@ -49,11 +49,11 @@ public final class Movie implements Comparable<Movie>, TableEntity {
 	public void setDirector(String director) {
 		this.director = director;
 	}
-	public String getProtagonista() {
-		return protagonista;
+	public String getLeadCharacter() {
+		return leadCharacter;
 	}
-	public void setProtagonista(String protagonista) {
-		this.protagonista = protagonista;
+	public void setLeadCharacter(String protagonista) {
+		this.leadCharacter = protagonista;
 	}
 
 	public void setId(long id) {
@@ -66,7 +66,7 @@ public final class Movie implements Comparable<Movie>, TableEntity {
 	
 	@Override
 	public String toString() {
-		return getId()+"\t"+getTitulo()+"\t"+getGenero()+"\t"+getProtagonista()+
+		return getId()+"\t"+ getTitle()+"\t"+ getGenre()+"\t"+ getLeadCharacter()+
 				"\t"+getDirector();
 	}
 

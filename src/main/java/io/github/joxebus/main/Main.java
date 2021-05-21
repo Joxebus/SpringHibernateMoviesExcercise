@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
 import io.github.joxebus.service.MovieService;
@@ -11,51 +13,53 @@ import io.github.joxebus.entity.Movie;
 import io.github.joxebus.util.Utilities;
 
 public class Main {
+	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
 	public static void main(String[] args) {
-		char opcion='S';
+		logger.info("Starting application");
+		char option='S';
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		ApplicationContext applicationContext = Utilities.getApplicationContext();
-		MovieService admon = applicationContext.getBean(MovieService.class);
+		MovieService movieService = applicationContext.getBean(MovieService.class);
 		do{
 			try {
 				menu();
-				opcion = br.readLine().toUpperCase().charAt(0);
+				option = br.readLine().toUpperCase().charAt(0);
 				System.out.println("**************************************");
 				
-				switch(opcion){
+				switch(option){
 					case '1':
-						admon.create();
+						movieService.create();
 						break;
 					case '2':
-						admon.update();
+						movieService.update();
 						break;
 					case '3':
-						System.out.println(admon.search());
+						System.out.println(movieService.search());
 						break;
 					case '4':
-						admon.searchByLeadCharacter();
+						movieService.searchByLeadCharacter();
 						break;
 					case '5':
-						admon.searchByDirector();
+						movieService.searchByDirector();
 						break;
 					case '6':
-						admon.searchByGenederOrLeadCharacter();
+						movieService.searchByGenederOrLeadCharacter();
 						break;
 					case '7':
-						admon.delete();
+						movieService.delete();
 						break;
 					case '8':
 						System.out.println("************ peliculas disponibles ************");
 						System.out.println("Código \tTítulo \tGenero \tProtagonista \tDirector");
-						for(Movie movie : admon.list(new Movie())){
+						for(Movie movie : movieService.list(new Movie())){
 							System.out.println(movie);
 						}
 						System.out.println("******************************************");
 						break;
 					case '9':
 						System.out.println("Saliendo del sistema");
-						opcion='S';
+						option='S';
 						break;
 					default:
 						System.out.println("Opción inválida");
@@ -65,7 +69,7 @@ public class Main {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}while(opcion!='S');
+		}while(option!='S');
 	}
 	
 	public static void menu(){
