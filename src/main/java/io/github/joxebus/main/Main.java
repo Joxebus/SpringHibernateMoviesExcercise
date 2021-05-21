@@ -8,8 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
-import io.github.joxebus.service.MovieService;
 import io.github.joxebus.entity.Movie;
+import io.github.joxebus.service.MovieService;
 import io.github.joxebus.util.Utilities;
 
 public class Main {
@@ -18,13 +18,15 @@ public class Main {
 	public static void main(String[] args) {
 		logger.info("Starting application");
 		char option='S';
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Long movieId = null;
+		String searchParam = null;
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 		ApplicationContext applicationContext = Utilities.getApplicationContext();
 		MovieService movieService = applicationContext.getBean(MovieService.class);
 		do{
 			try {
 				menu();
-				option = br.readLine().toUpperCase().charAt(0);
+				option = bufferedReader.readLine().toUpperCase().charAt(0);
 				System.out.println("**************************************");
 				
 				switch(option){
@@ -32,34 +34,50 @@ public class Main {
 						movieService.create();
 						break;
 					case '2':
-						movieService.update();
+						System.out.println("Ingrese el ID de la película");
+						movieId = Long.parseLong(bufferedReader.readLine());
+						movieService.update(movieId);
 						break;
 					case '3':
-						System.out.println(movieService.search());
+						System.out.println("Ingrese el ID de la película");
+						movieId = Long.parseLong(bufferedReader.readLine());
+						System.out.println(movieService.search(movieId));
 						break;
 					case '4':
-						movieService.searchByLeadCharacter();
+						System.out.print("Ingrese Protagonista: ");
+						searchParam = bufferedReader.readLine();
+						movieService.searchByLeadCharacter(searchParam);
 						break;
 					case '5':
-						movieService.searchByDirector();
+						System.out.print("Ingrese Director: ");
+						searchParam = bufferedReader.readLine();
+						movieService.searchByDirector(searchParam);
 						break;
 					case '6':
-						movieService.searchByGenreOrLeadCharacter();
+						System.out.print("Ingrese Genero: ");
+						searchParam = bufferedReader.readLine();
+						movieService.searchByGenre(searchParam);
 						break;
 					case '7':
-						movieService.delete();
+						System.out.print("Ingrese Genero o Protagonista: ");
+						searchParam = bufferedReader.readLine();
+						movieService.searchByGenreOrLeadCharacter(searchParam);
 						break;
 					case '8':
+						System.out.println("Ingrese el ID de la película");
+						movieId = Long.parseLong(bufferedReader.readLine());
+						movieService.delete(movieId);
+						break;
+					case '9':
 						System.out.println("************ peliculas disponibles ************");
 						System.out.println("Código \tTítulo \tGenero \tProtagonista \tDirector");
-						for(Movie movie : movieService.list(new Movie())){
+						for(Movie movie : movieService.list()){
 							System.out.println(movie);
 						}
 						System.out.println("******************************************");
 						break;
-					case '9':
+					case 'S':
 						System.out.println("Saliendo del sistema");
-						option='S';
 						break;
 					default:
 						System.out.println("Opción inválida");
@@ -79,10 +97,11 @@ public class Main {
 				"3.- Buscar\n" +
 				"4.- Buscar por protagonista\n" +
 				"5.- Buscar por director\n" +
-				"6.- Buscar por genero o protagonista\n" +
-				"7.- Eliminar\n" +
-				"8.- Listar\n" +
-				"9.- Salir"
+				"6.- Buscar por genero\n" +
+				"7.- Buscar por genero o protagonista\n" +
+				"8.- Eliminar\n" +
+				"9.- Listar\n" +
+				"S.- Salir"
 				);
 	}
 

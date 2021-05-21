@@ -4,10 +4,17 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+
 import io.github.joxebus.entity.TableEntity;
 import io.github.joxebus.util.Utilities;
 
-
+/**
+ * This is a generic class that can perform CRUD operations for
+ * any entity that implements TableEntity interface.
+ *
+ * See MovieRepository for an example of how to use it.
+ * @param <T>
+ */
 public abstract class GenericRepository<T extends TableEntity> implements Repository<T>  {
 	private Session session;
 	
@@ -46,9 +53,9 @@ public abstract class GenericRepository<T extends TableEntity> implements Reposi
 	
 	
 	@SuppressWarnings("unchecked")
-	public List<T> list(TableEntity tableEntity) {
+	public List<T> list(Class<T> clazz) {
 		session = Utilities.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		return (List<T>)session.createCriteria(tableEntity.getClass()).list();
+		return (List<T>)session.createCriteria(clazz).list();
 	}
 }

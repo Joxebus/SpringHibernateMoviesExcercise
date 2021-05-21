@@ -5,6 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * An entity is a class directly mapped to a table on the database
+ * in this case hibernate does the magic here, with the annotations
+ * to see the hibernate configuration.
+ *
+ * See the file src/resources/hibernate.cfg.xml
+ */
 @Entity
 public final class Movie implements Comparable<Movie>, TableEntity {
 
