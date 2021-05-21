@@ -34,7 +34,7 @@ public class MovieServiceImpl implements MovieService {
 
     /**
      * This constructor is used by Spring to inject the movieRepository dependency
-     * see the src/resources/applicationContext.xml
+     * see the src/main/resources/applicationContext.xml
      *
      * @param movieRepository
      */

@@ -1,4 +1,4 @@
-package io.github.joxebus.main;
+package io.github.joxebus;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,8 +12,8 @@ import io.github.joxebus.entity.Movie;
 import io.github.joxebus.service.MovieService;
 import io.github.joxebus.util.Utilities;
 
-public class Main {
-	private static final Logger logger = LoggerFactory.getLogger(Main.class);
+public class App {
+	private static final Logger logger = LoggerFactory.getLogger(App.class);
 
 	public static void main(String[] args) {
 		logger.info("Starting application");
