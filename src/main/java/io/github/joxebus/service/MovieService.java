@@ -25,10 +25,10 @@ public interface MovieService {
     List<Movie> searchByDirector();
 
     @SuppressWarnings("unchecked")
-    List<Movie> searchByGenderAndLeadCharacter();
+    List<Movie> searchByGenreAndLeadCharacter();
 
     @SuppressWarnings("unchecked")
-    List<Movie> searchByGenederOrLeadCharacter();
+    List<Movie> searchByGenreOrLeadCharacter();
 
     List<Movie> list(TableEntity tableEntity);
 }

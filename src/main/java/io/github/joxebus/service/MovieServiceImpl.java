@@ -144,7 +144,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Movie> searchByGenderAndLeadCharacter() {
+    public List<Movie> searchByGenreAndLeadCharacter() {
         String genre = "";
         String leadCharacter = "";
         try {
@@ -167,7 +167,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Movie> searchByGenederOrLeadCharacter() {
+    public List<Movie> searchByGenreOrLeadCharacter() {
         String param = "";
         try {
             System.out.print("Genero o Protagonista: ");

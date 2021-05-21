@@ -44,7 +44,7 @@ public class Main {
 						movieService.searchByDirector();
 						break;
 					case '6':
-						movieService.searchByGenederOrLeadCharacter();
+						movieService.searchByGenreOrLeadCharacter();
 						break;
 					case '7':
 						movieService.delete();
